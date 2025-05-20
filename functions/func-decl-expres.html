@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1>func-declaration:</h1>
+<p>Function Declaration/function definition/define a function <br> function add(param){
+        console.log("add:", param);
+    }
+    add("10 + 20"); </p> 
+ <hr>
+    <h1>Function Expression</h1>
+    <p>Assigning a function to a variable <br> 
+        const print =  function(a,b){
+        console.log(a-b)
+       }
+     print(5,3);
+     </p>
+     <hr>
+     <h1>Return from a function</h1>
+     <p>NOTE: if a function doesn't return any value(incase the function have console) and we tried to assign the invoke function call to the variable it will print 'undefined'.</p>
+  
+     <p>function print1(x,y){
+      val = x + y; 
+      return val;
+    }
+    const val1 = print1(1,1);
+
+    function print2(){
+        return val1 + 10 ;
+    }</p> 
+    
+    <p>const name = function(){
+        return "my name is Sushmitha";
+    }
+    console.log(name())
+    </p>
+   <hr>
+    <h1>Default parameter:</h1>
+    <p>if we missed to add the arguments while invoking a function default parameters values it will take</p>
+    <p> function addition(a=5,b=5){
+        return 2 * (a+b);
+    }
+   const out= addition(2);
+   console.log(out);</p>
+
+   <hr>
+   <h2>Rest Parameters</h2>
+   <p>Rest Parameter allows a function to accept any N no.of arguments as an array <br>
+      by adding 3 dots infornt of a parameter it will become rest operator. <br>
+      it can have only one rest paramert in a function, and it must be in the last position like last parameter.
+   </p>  
+     // eg:1
+    function res(x,...y){
+       console.log(x); 
+       console.log(y);
+    }
+    const res2 = res(12,3,56,8,9,5,1);
+    console.log(res2);
+// eg:2 
+   function sum(...arguments){
+    let sum = 0;
+    for(let val of arguments){
+      sum = sum + val 
+    }
+    return sum;
+   }
+   const op = sum(32,134,56,75,34,11); 
+   console.log(op);
+   <hr>
+
+   <h1>Arrow Functions :</h1>
+   <p>Syntax difference only will perform same as functions </p>
+   <p>//  eg:1
+    const arr = () => console.log("this is arrow function"); 
+    val = arr(); 
+    console.log(val);
+     //eg:2
+    const displyName = (fname,lname) => console.log(fname, lname); 
+    let val3 = displyName("Deepika", "Padukone"); 
+    console.log(val3);</p>
+<hr>
+<h1>Nested Functions</h1>
+<p>Functions inside another function is known as nested function</p>
+<hr>
+<h1>Function Scope</h1>
+1. a varible defined inside a func can't be access outside a function.
+2. a function can access all the varibales inside the scope where it is defined. <br>
+which mean a function can access local varibale(varibles inside a fun) and global varibale(variables defined outside).  
+but local varibales can't be accesed outside.  
+
+<h1>Clousers</h1>
+<p>an inner function can use variables, arguments from it's outer function  but outer function cannot use the variables , arguments from it inner function.</p>
+<p>a closure allows a function to access variables from its outer scope, even after that scope has closed.</p>
+<p> — A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).</p>
+<p>
+//  function scope: 
+
+//  console.log(m,n,l); ERRRRRRR => 1. varibales defined inside a function can't be acceesed outside
+var o = 40; 
+let p = 50; 
+const q = 60;
+function doSome() {
+    var  m = 10; 
+    let n = 20; 
+    const l = 30; 
+   console.log(m,n,l);
+
+//    console.log(o,p,q); 2. outside varibales can be accessed insed the the function
+   
+}
+doSome();
+
+function outer(x){
+   function inner(y){
+      function inside(z){
+         return x + y + z;
+     }
+     return inside;
+   }
+   return inner;
+} 
+const addfive = outer(5);   
+// console.log(addfive) //return a inner func
+const innerAdd2 = addfive(2);   
+console.log(innerAdd2);
+const insideAdd3 = innerAdd2(3); 
+console.log(insideAdd3);</p>
+<hr>
+<!--  -->
+<h1>Callback Functions</h1>
+<p>passing function as an arguments to another function is know as callback function</p>
+<p>function greet(name,bye){
+    console.log("Hello " + name);
+    bye();
+}
+function goodbye(){
+    console.log("Nice to meet u.. Good bye!!")
+}
+greet("Sushmitha", goodbye);</p>
+<hr>
+
+<h1>HOF - Higher Order Function</h1>
+<p>HOF is a regular function which takes 1 or more functions as an argumets and or return a function as a value from it, is know an HOF <br>
+ eg: MAP(), filter(), reduce() - are the HOF
+</p>
+
+<h1>D/F B/W hof & callback/ hof and callback or same? ans: no</h1>
+<p>For callback function - it's now mandatory, for the main function to return a function as a value, 
+it take functions as an arguments do something and  it's not like have to return a function as a value <br>
+For HOF - a function returns another function as a value then it is HOF function. <br>// eg:1--------
+function perform(arr,opera){
+   let val = []; 
+   for(let i =0; i < arr.length; i++){
+      val.push(opera(arr[i]));
+   }
+   return val
+}
+function square(x){
+  return x*x;
+}
+function cuibe(x){
+    return x*3;
+}
+const num =[2,45,6,5,2,1,8,7]
+const squaredVal = perform(num,square); 
+console.log(squaredVal);
+
+const cubeRes = perform(num,cuibe);
+console.log(cubeRes);
+
+// eg:2 ---------
+const usingMap = num.map(x=>x*x); 
+console.log(usingMap);
+<hr>
+<!-- pure function -->
+ <h1>Pure Functions:</h1>
+ <p>pure functions are the functions it produce same output for the same input, which is predictable. 
+    <br>function geek(value) {
+    return value+100;
+}
+
+console.log(geek(34)); 
+console.log(geek(4));  
+console.log(geek(12)); 
+<br>geek(34) will return the output as 100+34 = 134. We can clearly see that It's doesn't modify the entire code.
+ <br>function capitalize(str) {
+  return str.toUpperCase();
+}
+
+console.log(capitalize('geeks')); // Output: GEEKS
+console.log(capitalize('world')); // Output: WORLD</p>
+ <p>impure functions: will not provide the same output for the same input<br>
+    Functions can modify the state of the application or have side effects.
+Functions depend on other parts of the code.
+ <br>eg: <br>
+ function getRandomNumber() {
+  return Math.floor(Math.random() * 10);
+}
+
+console.log(getRandomNumber());
+console.log(getRandomNumber());
+
+<hr>
+<!-- IIFE -->
+ <h1>IIFE:</h1>
+ <p>the time when I defining a function and at the same time I'm executing that function is know as IIFE.</p>
+ <br>
+ <p>// function(){
+//             // this will lead to error.
+// } <br>
+// (function(){
+//             // if we write a function inside the () parenthesis, it's a valid syntax
+// }); <br>
+(function(){
+   console.log("this is IIFE func which is writing fn inside parenthesis() and imidiatly calling using()")         // after that if we call the function by() after writing it it execute immideatly.
+})();</p>
+</p>
+</p>
+
+<hr>
+<h1>Recurssion:</h1>
+<p>Recursion in JavaScript is a programming technique where a function calls itself within its own definition. 
+  <br>  It's used to solve problems that can be broken down into smaller, self-similar subproblems.
+  <br> A recursive function typically has two parts: a base case and a recursive step. 
+<br>   The base case is a condition that stops the recursion, preventing the function from calling itself indefinitely. The recursive step is where the function calls itself with a modified input, working towards the base case.</p>
+
+<body>
+    <script>
+// definition
+        function add(param){
+        console.log("add:", param);
+    }
+    add("10 + 20");
+
+    //expression
+    const print =  function(a,b){
+        console.log(a-b)
+    }
+     print(5,3);
+    
+    //  returning from function
+    const name = function(){
+        return "my name is Sushmitha";
+    }
+    console.log(name())
+
+// using 1 function values to another another function 
+    function print1(x,y){
+      return  x + y;
+    }
+    const val1 = print1(1,1);
+
+    function print2(){
+        return val1 + 10 ;
+    }
+     const val2 = print2(); 
+
+     function print3(){
+        return val2+ 1;
+     }
+    console.log(print3());  //if func doesn't return anything undefined will be printed.
+
+ // default parameters: 
+    // eg:1
+    function fullname(fname="sushmitha", lname ="Panthagaani"){
+        console.log(fname, lname)
+    }
+    fullname("sushmita",); 
+   // eg:2
+    function addition(a,b=5){
+        return 2 * (a+b);
+    }
+   const out= addition(2);
+   console.log(out);
+
+//   REST parameters   
+    // eg:1
+    function res(x,...y){
+       console.log(x); 
+       console.log(y);
+    }
+    const res2 = res(12,3,56,8,9,5,1);
+    console.log(res2);
+// eg:2 
+   function sum(...arguments){
+    let sum = 0;
+    for(let val of arguments){
+      sum = sum + val 
+    }
+    return sum;
+   }
+   const op = sum(32,134,56,75,34,11); 
+   console.log(op);
+// ARROW FUNCTIONS: 
+//  eg:1
+const arr = () => console.log("this is arrow function"); 
+val = arr(); 
+console.log(val);
+//eg:2
+ const displyName = (fname,lname) => console.log(fname, lname); 
+ let val3 = displyName("Deepika", "Padukone"); 
+ console.log(val3);
+// ============================================================
+
+//  function scope: 
+
+//  console.log(m,n,l); ERRRRRRR => 1. varibales defined inside a function can't be acceesed outside
+var o = 40; 
+let p = 50; 
+const q = 60;
+function doSome() {
+    var  m = 10; 
+    let n = 20; 
+    const l = 30; 
+   console.log(m,n,l);
+
+//    console.log(o,p,q); 2. outside varibales can be accessed insed the the function
+   
+}
+doSome();
+
+function outer(x){
+   function inner(y){
+      function inside(z){
+         return x + y + z;
+     }
+     return inside;
+   }
+   return inner;
+} 
+const addfive = outer(5);   
+// console.log(addfive) //return a inner func
+const innerAdd2 = addfive(2);   
+console.log(innerAdd2);
+const insideAdd3 = innerAdd2(3); 
+console.log(insideAdd3);
+
+// CALLBACK FUNCTIONS ===================================
+//Eg:1
+function a(b){
+    b();
+}
+function name5(){
+    console.log("callback function");
+}
+a(name5);
+
+// eg:2
+function greet(name,bye){
+    console.log("Hello " + name);
+    bye();
+}
+function goodbye(){
+    console.log("Nice to meet u.. Good bye!!")
+}
+greet("Sushmitha", goodbye);
+
+//HOF =================================
+// eg:1--------
+function perform(arr,opera){
+   let val = []; 
+   for(let i =0; i < arr.length; i++){
+      val.push(opera(arr[i]));
+   }
+   return val
+}
+function square(x){
+  return x*x;
+}
+function cuibe(x){
+    return x*3;
+}
+const num =[2,45,6,5,2,1,8,7]
+const squaredVal = perform(num,square); 
+console.log(squaredVal);
+
+const cubeRes = perform(num,cuibe);
+console.log(cubeRes);
+
+// eg:2 ---------
+const usingMap = num.map(x=>x*x); 
+console.log(usingMap);
+// ==========================================
+
+// Pure-functions----------- we can predict the output and return the same output for the same input.
+//  eg:1
+function add(a,b){
+    console.log(a+b)
+}
+add(2,2)
+
+// eg:2
+function UpperCase(str){
+    return str.toUpperCase();
+}
+console.log(UpperCase("sushmita kesavulu")); 
+
+// Impure - functions---------we can't predict the output
+
+// eg:1-----------
+let x = 0;
+function increment(){
+   return x++; 
+}
+console.log(increment());
+console.log(increment());
+console.log(increment()); //here output is not same it's changing
+
+function randNum(){
+    return Math.floor(Math.random() *10);
+}
+console.log(randNum());
+console.log(randNum());
+console.log(randNum());
+// =====================================================
+
+// IIFE --------defining and executing at the same time
+
+// function(){
+//             // this will lead to error.
+// }
+// (function(){
+//             // if we write a function inside the () parenthesis, it's a valid syntax
+// }); 
+(function(){
+   console.log("this is IIFE func which is writing fn inside parenthesis() and imidiatly calling using()")         // after that if we call the function by() after writing it it execute immideatly.
+})();
+
+// ====================================================== 
+// RECURRSSION: function calls itself within it's own definition
+
+function fetchwater(counter){
+    if(counter === 0){
+        console.log("No more water left"); 
+        return
+    }
+    console.log("fetching water...");
+    fetchwater(counter - 1);
+}
+fetchwater(5);
+</script>
+</body>
+</html>

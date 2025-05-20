@@ -42,6 +42,14 @@ function findMax(arr){
 }
 console.log(findMax(arr)) ;
 
+ let numbers =  [1,23,4,5,6,6,7,8,9];
+    const res = numbers.reduce(function(acc,curr){
+         acc= acc + curr;
+         return acc;
+    },0)
+    console.log(res)
+
+    
 const re = arr.reduce(function(acc,curr){
     if(curr > acc){
         acc = curr;
