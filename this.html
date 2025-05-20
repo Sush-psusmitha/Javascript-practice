@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This keyword value in different circumstance</h1>
+</body>
+<script>
+    "use strict"
+    // this kw in global scope
+    console.log(this)  //GolobalObject (window)
+
+
+    // this kw in function 
+
+    function x(){
+        console.log(this)
+    }
+    x();
+    window.x();
+
+    // this kw inside a object's methods 
+     const obj = {
+        a : 10, 
+        x: function(){
+            console.log(this)
+        }
+     }
+
+
+     obj.x();
+
+</script>
+</html>

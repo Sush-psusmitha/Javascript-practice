@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Call(), apply(), Bind() - methods</h2>
+    <p>All these methods are used for method/functions borrowing/sharing. <br>
+1. call method is used to call the function with the given this value and argument can be passed individually. <br>
+2. apply method is similar to call method, the only difference is that instead of passing argument individually, will pass the argument in a list/array. <br>
+3. bind method is similar to call method. It is also used to override this value, but the difference is it will not invoke the function instantly but return a function with attached this and argument which can be called later.</p>
+    <script>
+        const names = {
+    fname : "sushmitha", 
+    lname: "Reddy", 
+}
+ let printName = function(age,city){
+        console.log(this.fname + " " + this.lname + ", age: " + age + ", city: "+ city);
+    }
+const name2 = {
+    fname:"Deepika", 
+    lname:"padukone"
+}
+const name3 = {
+    fname:"Ranbir", 
+    lname:"Kapoor"
+}
+const name4 = {
+    fname:"Aravind", 
+    lname:"Raj"
+}
+
+// bind method => used to copy the methods into another varibales we can invoke it later. 
+const printNameCopy = printName.bind(name4, 44, "Bangalore");
+console.log(printNameCopy); //return a function bcz it's another copy of a function printName.
+printNameCopy();
+
+
+// names.printName();
+// apply() => same like call but while invoking a function we pass arguments inside the array.
+printName.apply(name3, [35,"Mumbai"]);
+
+// call method used for borrowing the methods from one obj to another
+printName.call(name2, "23", "Chennai");
+printName.call(names, "22", "Kerala");
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS practice</title>
+</head>
+<body>
+    <h1>How functions will behave behide the scencs</h1>
+    <h5>map() 
+        | reduce() | filter()    </h5>
+<script>
+    arr = [2,4,6,8,7,9,11]; 
+
+// find the sum in a non functional way 
+// const res = arr.reduce(function(acc,curr){
+//     if(curr > acc){
+//         acc = curr[i];
+//     }
+//     return acc
+// },curr[i]);
+// console.log(res);
+
+function findSum(arr){
+    let sum = 0; 
+    for(let i = 0; i < arr.length; i++){
+        sum = sum + arr[i]; 
+    }
+    return sum
+}
+const output =  findSum(arr);
+console.log(output);
+
+
+function findMax(arr){
+    let max = 0; 
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] > max){
+            max = arr[i];
+        }
+    }  return max
+}
+console.log(findMax(arr)) ;
+
+const re = arr.reduce(function(acc,curr){
+    if(curr > acc){
+        acc = curr;
+    }
+    return acc;
+},0);
+console.log(re)
+
+function findMin(arr){
+    let min = arr[0]; 
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] < min){
+            min = arr[i];
+        }
+    }return min;
+}
+console.log(findMin(arr));
+
+const minVal = arr.reduce(function(acc,curr){
+    if(curr < acc){  
+        acc = curr;
+        
+    }return acc;
+},arr[0])
+
+console.log(minVal);
+
+
+
+// filter
+// function isOdd(x){
+//     return x % 2 !== 0;
+// }
+// const output = arr.filter(isOdd); 
+// console.log(output)
+
+
+// const doubleArr = arr.map(x=>x*2); 
+// console.log(doubleArr); 
+// const tripple = arr.map(x=>x*3); 
+// console.log(tripple); 
+// const binary = arr.map(x=>x.toString(2)); 
+// console.log(binary)
+
+    const names = [
+    {fname:"sush", lname:"mitha", age: 23},
+    {fname:"arnav" ,lname:"Roa", age: 33},
+    {fname:"shyeyanchi", lname:"suri", age: 28},
+    {fname:"Gowri", lname:"matha", age: 20}
+    ]
+    
+const output1 = names.map(x=>x.fname +" " + x.lname) ;
+console.log(output1);
+
+const output2=names.reduce(function(acc,curr){
+    if(acc[curr.age]){
+        acc[curr.age] = ++acc[curr.age];
+    }else{
+        acc[curr.age] = 1
+    }
+    return acc;
+},{}); 
+console.log(output2);
+
+const output3 = names.filter(x=>x.age<25).map(x=>x.fname);
+console.log(output3);
+
+const output4 = names.reduce(function(acc,curr){
+    if(curr.age < 25){
+        acc.push(curr.fname);
+    }
+    return acc
+},[]); 
+console.log(output4);
+
+</script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops</title>
+</head>
+<body>
+
+    <h1>Loops in Js</h1>
+    <h3>For Loop:</h3>
+    <p>when you know how many times you want loop
+   <br>
+        eg: for(let i = 0; i <= 5; i++ ){ <br>
+            console.log(i) <br>
+        }
+<br>
+        in for loop,  let i = 0 (inline varibale) initialiser can aslo place outside, if we place outside must give the ;semicolon in that place <br>
+          eg:
+            let i = 0
+            for(; i <= 5; i++ ){ <br>
+            console.log(i) <br> by giving this works as same, without error 
+        }
+    </p>
+    <hr>
+    <h3>while Loop:</h3>
+    <p>Used when you want a loop untill the statment is false, and you don't always know how many times.</p>
+     eg:  <br>
+    <p>
+        let i=0; <br>
+        while(i<=5){  <br>
+          console.log(i) <br>
+          i++
+        }  
+        
+    </p> <hr>
+    <h3>Do-while Loop</h3>
+    <p>runs code atleast once even if the condition is false </p>
+ <br>
+  let i = 0;
+do{
+  console.log(i);
+  i++;
+} while (i < 5);  
+
+   <hr>
+
+   <h3>For-in Loop</h3>
+   <p>Used to loop through object Properties and Array <br>
+   key will be property name in th object/ key will index in the case of Array. <br> 
+   obj[key] used to access the values.
+ </p>
+    const person = { 
+        name:"Sushmitha",  //in obj key will be property name,
+        age: 23, 
+        gender: "Female"
+    }
+    for( let key in person){  //here key represents obj's property key
+    //    console.log(key)// property name
+    //    console.log(person[key])//  by accesing with [] will get property value
+       console.log(key + ": " + person[key]) 
+    }
+
+    const colors = ["blue", "red","orange","yellow"]; 
+    for(let key in colors){
+        // console.log(key) //incase of Array key will be index
+        console.log(colors[key])  //to access value
+ <hr>
+ <h3>For-of Loop</h3>
+ <p>Used to loop through arrays or iterable objects. <br>
+  value will stored in the 'of' before kw's
+</p> 
+  for(let color of colors){
+        console.log(color) //value will be stored in key 
+    }
+
+    const list =[
+        {name:"sush", age:"23"},
+        {name:"Ranbir", age:"43"},
+        {name:"Alia", age:"33"},
+    ]
+    for(let val of list){
+        console.log(val);
+    }
+
+
+</body>
+<script>
+//  for loop 1.print 1 - 10 numbers
+// Q. print number each second
+//    function a(){
+//     for(let i = 1; i<=5; i++){
+//         setTimeout(()=>{
+//             console.log(i)
+//         },1000*i);
+//     }
+//     console.log("sush")
+//    }
+//  a();
+
+// Q. print numbers for each seconds using var for initialisation with closure, 
+//    function b(){
+//     for(var i=1; i<10; i++){
+//         function close(x){
+//             setTimeout(()=>{
+//                 console.log(x)
+//             },x*1000);
+//         }
+//         close(i);
+//     }
+//     console.log("sush")
+//    }
+//    b();
+
+    // for(let i = 10; i >= 1; i--){
+    //     console.log(i)
+    // }
+
+//Q. print odd numbers using loops: 
+// for(let i = 1; i< 10; i++){
+//     if(i % 2 !== 0){
+//         console.log(i)
+//     }
+// }
+
+    
+    // let i = 1; 
+    // while(i<=5){
+    //     console.log( "Number: #"  +i); 
+    //     i++;
+    // }
+
+    // let a = 5; 
+    // while(a>0){
+    //     console.log(a)
+    //     a--;
+    // }
+
+    // Q. using while loop print even number: 
+//   let i = 1; 
+//     while(i <=10){ 
+//         if(i % 2 === 0){
+//             console.log(i)
+//         }
+//         i++;
+//     }
+
+    // DO-While 
+// let i = 0;
+// do{
+//   console.log(i);
+//   i++;
+// } while (i < 15);
+    // let d = 0; 
+    // do{
+    // if( d % 2 !== 0){
+    //   console.log(d);
+    // }
+    // d++;    
+    // }while(d < 5);
+
+
+    // for-in loop used for object properties 
+
+    const person = { 
+        name:"Sushmitha",  //in obj key will be property name,
+        age: 23, 
+        gender: "Female"
+    }
+    for( let key in person){  //here key represents obj's property key
+    //    console.log(key)// property name
+    //    console.log(person[key])//  by accesing with [] will get property value
+       console.log(key + ": " + person[key]) 
+    }
+
+    const colors = ["blue", "red","orange","yellow"]; 
+    for(let key in colors){
+        // console.log(key) //incase of Array key will be index
+        console.log(colors[key])  //to access value
+    }
+
+    for(let color of colors){
+        console.log(color) //value will be stored in key 
+    }
+
+    const list =[
+        {name:"sush", age:"23"},
+        {name:"Ranbir", age:"43"},
+        {name:"Alia", age:"33"},
+    ]
+    for(let val of list){
+        console.log(val);
+    }
+
+    for (let i = 0; i<5; i++){
+     if(i === 1); continue
+        if(i === 3); break
+       
+        console.log(i)
+    }
+</script>
+</html>
