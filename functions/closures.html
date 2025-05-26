@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures</title>
+</head>
+<body>
+
+    <h1>Closures</h1>
+    <p>Closure is a function along with it's lexical environment forms a closures.</p>
+    <p>functions have access to it's parent lexical scope.</p>
+    <p>so, whenever a function is returned, even if it's vanished in the execution context <br>
+    but still it remembers the reference it was pointing to. <br> 
+    it's not just that functions alone it returns but the entire closure. 
+    </p>
+    <p>Even if we return the function, it still remembers its original lexical environment and local storage so it can access values.</p>
+    
+    <p>If we write return function x(){.....} --- this automatically returns the value.</p>
+    <p> The function that is returned is reference so any change in value of that variable inside function will be reflected as such.</p>
+    <script>
+        // ex: 1 
+
+        function out(){
+            let msg = "Hellow"; 
+            function inner(){
+                console.log(msg);
+            }
+            inner();
+        }
+        //  msg= "Namasthey"; ---- we cannot update references outside the scope
+       out();
+
+// ====================================
+        // Ex: 2 - references can be updated with that scope:
+       function z(){
+        b=90;
+         function x(){
+            var a = 10; 
+            function y(){
+                console.log(a,b);
+            }
+            a=400
+           y();
+        }
+        b=5000
+       x()
+       }
+    z();
+//   clousures - Allow for prvt varibales and state maintainance.
+function createCounter(){
+    let count = 0; 
+    function increse(){
+        count++; 
+        console.log(`count incresed by ${count}`);
+    }
+    function getCount(){
+        return count;
+    }
+    return {increse,getCount}; 
+    
+}
+
+const displayCount = createCounter();
+displayCount.increse();
+displayCount.increse();
+displayCount.increse();
+displayCount.increse();
+console.log(`currect count is value is ${displayCount.getCount()}`)
+
+//create a game that keep tracks the points
+function gameScore(){
+     let score = 0;
+function incresePts(points){
+   score += points;
+   console.log(`+${points} pts`);
+}
+
+function decreasePts(points){
+    score -= points; 
+    console.log(`-${points} pts `)
+}
+function getScore(){
+    return score;
+}
+
+ return {incresePts,decreasePts,getScore}
+}
+
+const displayScore = gameScore(); 
+displayScore.incresePts(5);
+displayScore.incresePts(15);
+displayScore.decreasePts(5);
+console.log(`Total score is ${displayScore.getScore()}`);
+
+    </script>
+</body>
+</html>

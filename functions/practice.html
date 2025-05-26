@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>functions - excersices</title>
+</head>
+<body>
+    <h1>Functions Excersices</h1>
+    <script>
+      // Q1: Write a function named `greet` that logs "Hello, World!" to the console.
+        function greet(){
+            console.log("Hello world!")
+        }
+        greet();
+
+        // Q2: Create a function `add(a, b)` that returns the sum of two numbers.
+        function add(a,b){
+          console.log(a+b)
+        }
+        add(5,5);
+
+        // Q3: Write a function `isEven(number)` that returns `true` if the number is even, and `false` otherwise.
+        function isEven(x){
+            if(x % 2 === 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+       const output = isEven(8); console.log(output);
+       // Q4: Write a function expression to find the square of a number and assign it to a variable `square`.
+       const square = function(x){
+        return x*x;
+       }
+       console.log(square(9)); 
+
+// Q5: Convert the following function to an arrow function:
+// function multiply(a, b) {
+//   return a * b;
+// }
+      let multiply = (a,b) => a*b;
+      console.log(multiply(5,5));
+// Q6: Write a function `greetUser(name = "Guest")` that greets the user by name, defaulting to "Guest".
+function GreetUser(name){
+    console.log("Hii",name,"Welcome!!!");
+}
+GreetUser("Anushka")
+
+// // Q7: What will be the output of this code? Explain. 
+let msg = "Namasthey from Global"; 
+function greetMsg(){
+ let msg = "hellow from local"
+ console.log(msg);
+}
+greetMsg(); //hellow from local
+console.log(msg); //Namasthey from Global
+
+// Q8: Write a function `calculate(a, b, operation)` that takes two numbers and a function `operation`
+// as arguments. The `operation` function will be applied to `a` and `b`.
+// Example:
+// calculate(5, 3, (x, y) => x + y); // returns 8
+
+function calc(a,b,operation){
+    return operation(a,b);
+}
+function operation(x,y){
+    return x + y;
+};
+const output1 = calc(2,23,operation);
+console.log(output1);
+
+// Q9: Write a function `sumAll(...numbers)` that returns the sum of all numbers passed to it.
+function sumAll(...numbers){
+   let sum = 0;
+    for(let num of numbers){
+        sum+=num;
+    }
+    return sum;
+}
+const res = sumAll(3,245,6,7,8,9,2,45,7,1);
+console.log(res);
+// Q10: Write an IIFE that prints "This is an IIFE" to the console immediately when the code runs.
+(function(){
+    console.log("This is IIFE!..")
+})();
+
+// Q1: Write a function `createCounter()` that returns a function.
+// Each time the returned function is called, it should return the next number (starting from 1).
+function myCounter() {
+  let counter = 0;
+  return function() {
+    counter++;
+    return counter;
+  };
+}
+const addi = myCounter();
+console.log(addi());
+console.log(addi());
+console.log(addi());
+
+
+
+    </script>
+</body>
+</html>

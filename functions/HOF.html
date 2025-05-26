@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOF</title>
+</head>
+<body>
+    <h1>HOF - Higher Order Functions </h1>
+    <p>which take another function as an argument and returns a funtion is know as HOF</p>
+    <p>It is this ability that function can be stored, passed and returned,  they are called <b>first class citizens</b>.</p>
+
+    <h2>map()</h2>
+    <p>trasform an array and get a new value from it.</p>
+
+    <h2>filter()</h2>
+    <p>is used to filter the values from the array, based on some logic</p>
+    <script>
+        // OLD WAY of writing: 
+         const radius = [4,2,8,5]; 
+       
+        const Area = function(radius){
+            return Math.PI * radius * radius;
+        }
+
+        const circumfrance = function(radius){
+            return 2 * Math.PI * radius;
+        }
+
+        const diameter = function(radius){
+            return 2 * radius;
+        }
+        function calculate(radius,logic){
+          output=[]; 
+          for(let i = 0; i < radius.length; i++){
+             output.push(logic(radius[i]));
+          }
+          return output;
+        }
+        
+        console.log(calculate(radius,Area));
+        console.log(calculate(radius,diameter))
+        console.log(calculate(radius,circumfrance))
+
+        // ===============================
+        // map()
+        // ex-1: 
+        const arr = [4,3,5,7,2]; 
+
+        const double = arr.map(x=>x*2); 
+        console.log(double);
+
+        const triple = arr.map(x=>x*3); 
+        console.log(triple);
+
+        const binary = arr.map(x=>x.toString(2));
+        console.log(binary);
+
+        
+        
+        
+        // filter()=============================based on some logics filter will work
+        // 1. odd values? 
+        const OddVal = arr.filter(x => x % 2 !== 0); 
+        console.log(OddVal); 
+        // 2. Even Values ? 
+        const EvenVal = arr.filter(x=> x % 2 === 0); 
+        console.log(EvenVal);
+        // 3.grater than 4: 
+        const GraterThan4 = arr.filter(x=> x > 4); 
+        console.log(GraterThan4); 
+
+
+    </script>
+</body>
+</html>

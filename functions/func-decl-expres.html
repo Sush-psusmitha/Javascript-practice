@@ -308,7 +308,7 @@ console.log(val);
 //  function scope: 
 
 //  console.log(m,n,l); ERRRRRRR => 1. varibales defined inside a function can't be acceesed outside
-var o = 40; 
+// var o = 40; 
 let p = 50; 
 const q = 60;
 function doSome() {
@@ -321,7 +321,9 @@ function doSome() {
    
 }
 doSome();
+// Closures
 
+// eg:1;
 function outer(x){
    function inner(y){
       function inside(z){
@@ -337,6 +339,19 @@ const innerAdd2 = addfive(2);
 console.log(innerAdd2);
 const insideAdd3 = innerAdd2(3); 
 console.log(insideAdd3);
+
+// Eg:2
+function mycounter(){
+    let value =0; 
+    return function(){
+         value++;
+         return value;
+    }
+}
+const ctr = mycounter();
+
+console.log(ctr());
+console.log(ctr());
 
 // CALLBACK FUNCTIONS ===================================
 //Eg:1
