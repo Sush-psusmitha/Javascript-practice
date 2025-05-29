@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH</title>
+</head>
+<body>
+
+    <h1>Methods of MATH</h1>
+    <p>1. Math.round() - rounds up to the next value which is above .5 / round down to previous value below .5</p>
+    <p>Math.ceil()-  round up to next value</p>
+    <p>Math.floor()-  round down</p>
+    <p>Math.pow() - takes 2 value as arguments</p>
+    <p>Math.sqrt() - square value will return</p>
+    <p>Math.abs() - positive value will return</p>
+    <p>Math.max() - return maximum vaue</p>
+   
+   <script>
+        let x = 3.4 //3 ----- if 3.5 - 4
+        console.log(Math.round(x));
+        console.log(Math.ceil(x)); //4 round up
+        console.log(Math.floor(x)); //3 round down
+        let y = 5.7; 
+        console.log(Math.pow(y,3)) // 5**2 => 5x5=25
+        console.log(Math.sqrt(4)) //2
+        let z = -8;
+        console.log(Math.abs(z)); //gives positive values
+
+        
+        console.log(Math.max(x,y,z));
+        console.log(Math.min(x,y,z));
+
+        const arr = [4,6,2,7,956,23]; 
+        console.log(Math.max(...arr));
+        console.log(Math.min(...arr));
+
+        console.log(Math.PI);
+
+        console.log(Math.random())
+        console.log(Math.floor(Math.random() * 10))
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        JSON - methods
+    </title>
+</head>
+
+<body>
+  <h1>JSON & Object</h1>
+  <p>javascript object notation is data interchange formate is used to transfer data from one application to another over the interent</p>
+
+  <h2>JSON.stringify()</h2>
+  <p>Converts a JavaScript object or array(values) into a JSON string. <br> Sending (convert object to JSON): let data = { product: "Book", price: 250 };
+    let payload = JSON.stringify(data);
+    // send `payload` to server</p>
+
+    <h2>JSON.parse()</h2>
+    <p>convert json string back to javascript object. we can't able to the json string data. by convert into object only we can</p>
+    
+     <br>
+     <p>IN SHORT : stringigy - object to json string <br> parse() - json string back to object</p>
+
+     <h1>NUMBER - methods</h1>
+
+     <h2>parseInt() - convert string to number</h2>
+   
+    <script>
+        const data = {
+            name:"Sushmitha", 
+            age:23,
+            intro:function(){
+                console.log(`my name is ${this.name} and age ${this.age}`)
+                console.log("my name is " + this.name)
+            }
+        }
+        const arr =["color","blue",'yellow']
+      data.name = "kesavulu";
+      console.log(data["name"]); //access onject values by . / [""]
+      console.log(data.age);
+      data.intro();
+
+    //   json.stringify() sending data (like object to json string)
+    let stringJson = JSON.stringify(data);
+    console.log(stringJson);  //returns json data / data can't be accesssed directly
+
+    // parse() = json string back to js object.
+    let jsondata = JSON.parse(stringJson); 
+    console.log(jsondata.name);
+    // =====================================================================
+
+    // number methods: 
+  console.log(parseInt("42"))//42
+  console.log(parseInt("3.23"))//3
+  console.log(parseInt("30px"))//30
+  console.log(parseInt("101",2)) //5 binary to decimal
+    
+
+  console.log(parseFloat("449.43px")) //449.43
+  console.log(parseFloat("323.4")) //323.4
+  console.log(parseFloat("33")) //33
+  console.log(parseFloat("23"))//23
+
+  console.log(Number("45")) //45
+  console.log(Number("45.5")) //45.5
+  console.log(Number("45.5px"))  //NaN bcz number is more strict than parseInt() / parseFloat()
+
+// Boolean methods: 
+console.log(Boolean(1)) //true
+console.log(Boolean("hello")) //non-empty strings consider true
+console.log(Boolean(33)); //true
+console.log(Boolean([])); //true
+console.log(Boolean({})); //true
+console.log(Boolean(function(){})); //true
+
+console.log(Boolean(0)) //false
+console.log(Boolean("")); //empty strings consider false
+console.log(Boolean(null)); 
+console.log(Boolean(NaN)); 
+console.log(Boolean(undefined)); 
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Recurrsion</h1>
+    <p>where a function calls itself within its own definition.</p>
+    <script>
+        // ===============================
+        function func(n){
+            if(n == 1){
+                return 1
+            }
+           return n + func(n-1)
+        }
+       const res = func(5);
+       console.log(res); 
+
+   // ===============================
+       function fetchwater(water){
+        if(water === 0){
+            console.log("No More Water..!")
+            return
+        }
+        console.log("fetching water..")
+         fetchwater(water - 1);
+       }
+      fetchwater(5);
+   // ===============================
+      function fract(x){
+         if(x > 1){
+            return x * fract(x-1)
+         }
+         return 1;
+      }
+      console.log(fract(3)); 
+      
+   // ===============================
+      function fraction(x){
+        if(x<1){
+            return 1
+        }
+        return x * fraction(x-1);
+      }
+      let x = 4;
+      console.log(`the fraction of ${x} is ${fraction(x)}`)
+    </script>
+</body>
+</html>

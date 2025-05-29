@@ -15,6 +15,9 @@
 
     <h2>filter()</h2>
     <p>is used to filter the values from the array, based on some logic</p>
+
+    <h2>reduce()</h2>
+    <p> used at a place where we have to take an array and comeup with the single value.</p>
     <script>
         // OLD WAY of writing: 
          const radius = [4,2,8,5]; 
@@ -45,7 +48,7 @@
         // ===============================
         // map()
         // ex-1: 
-        const arr = [4,3,5,7,2]; 
+        const arr = [4,3,5,7,2,0]; 
 
         const double = arr.map(x=>x*2); 
         console.log(double);
@@ -56,10 +59,7 @@
         const binary = arr.map(x=>x.toString(2));
         console.log(binary);
 
-        
-        
-        
-        // filter()=============================based on some logics filter will work
+        // filter()=============================> based on some logics filter will work
         // 1. odd values? 
         const OddVal = arr.filter(x => x % 2 !== 0); 
         console.log(OddVal); 
@@ -70,6 +70,96 @@
         const GraterThan4 = arr.filter(x=> x > 4); 
         console.log(GraterThan4); 
 
+        // reduce() ==============================> used at a place where we have to take an array and comeup with the single value.
+
+        // non-functional way: 
+
+        // find sum? 
+        function findSum(arr){
+            let sum = 0; 
+            for(let i = 0; i < arr.length; i++){ 
+                sum = sum + arr[i];
+            }
+            return sum
+        }
+       console.log(findSum(arr));
+
+    //sum using reduce 
+    const sumVal = arr.reduce(function(acc,curr){
+        acc = acc + curr; 
+        return acc;
+    },0); 
+    console.log(sumVal);
+
+
+    // max value: 
+
+    function findMax(arr){
+        let max = 0; 
+        for(let i = 0; i < arr.length; i++){
+            if( arr[i] > max ){ 
+                max = arr[i]
+            }
+        }
+        return max
+    }
+
+    console.log(findMax(arr));
+
+    // max using reduce: 
+
+    const MaxVal = arr.reduce(function(acc,curr){
+        if(curr > acc){
+            acc = curr;
+        }
+        return acc;
+    },0); 
+    console.log(MaxVal);
+
+    // min val: 
+    const Minval = arr.reduce(function(acc,curr){
+        if(curr < acc){
+            acc = curr;
+        }
+        return acc;
+    })
+    console.log(Minval); 
+    // ===========================================
+   const names = [
+    {fname:"sushmitha", lname:"Reddy", age: 23},
+    {fname:"arnav" ,lname:"Roa", age: 23},
+    {fname:"shyeyanchi", lname:"suri", age: 28},
+    {fname:"Gowri", lname:"matha", age: 40}
+    ]
+
+    const FullName = names.map(x => x.fname + " " + x.lname); 
+    console.log(FullName);
+
+    // Q. How many people are of a particular unique age?
+
+   const UniqAge = names.reduce(function(acc,curr){
+    if( acc[curr.age]){
+        acc[curr.age] = ++acc[curr.age];
+    }
+    else{
+        acc[curr.age] = 1 ;
+    }
+     return acc;
+   },{}); 
+   console.log(UniqAge);
+
+//Q. list of people full name whose age is below 30? 
+const list = names.filter(x=>x.age < 30).map(x=> x.fname+ " " + x.lname);
+console.log(list); 
+
+// using reduce(); 
+const abv30age = names.reduce(function(acc,curr){
+    if(curr.age < 30){
+        acc.push(curr.fname);
+    }
+    return acc
+},[]); 
+console.log(abv30age)
 
     </script>
 </body>

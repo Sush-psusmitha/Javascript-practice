@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methods of String</title>
+</head>
+<body>
+
+    <h1>STRING - METHODS</h1>
+    <p>.length - string length will be provided</p>
+    <p>.charAt(index) - returns the charecter at the specific index </p>
+    <p>.indexOf() / lastIndexOf() - finds the position(index) of charecter</p>
+    <p>.includes() - returns true/false if the provided substring is present</p>
+    <p>.startsWith() / .endsWith() - return boolean value if substring is present</p>
+    <p>.slice(start,end) - extract that particlar (end before value will count)</p>
+    <p>.substring(start,end) - similar to slice doesn't accept negative values</p>
+    <p>.replace(old,new) - replace old with new</p>
+    <p>.trim() - remove white spaces from both ends</p>
+    <p>.split(separator,limit) - will split the words or charecter based on , / spance ""</p>
+    <script>
+        let str = "Sushmitha Kesavulu";
+        console.log(str.length);//18
+        console.log(str[0]);//S
+        console.log(str.charAt(0));//S
+        console.log(str.toLowerCase())
+        console.log(str.toUpperCase())
+        console.log(str.indexOf("a"))//8
+        console.log(str.lastIndexOf("a"))//13
+        console.log(str.includes("mith"))//true
+
+        let filename = "image.png"; 
+        console.log(filename.startsWith("img"));//false
+        console.log(filename.endsWith("png")); 
+
+        console.log(str.slice(0,4));//Sush
+        console.log(str.substring(4,7));//mit
+
+        console.log(filename.replace("png","webp")); //image.webp
+
+        const phase = "      sushmitha    "
+        console.log(phase.trim());//remove spaces
+
+        let fruites = "apple,bannana,orange"; 
+        let fruites1 = "apple/bannana/orange"; 
+        let fruites2 = "apple, bannana, orange "; 
+        console.log(fruites.split(",")) //split words by , 
+        console.log(fruites1.split("/",2)) //split words by / , for 2 times
+        console.log(fruites2.split(" ")) //split words by spacce
+        console.log(fruites2.split("")) //split each charecter
+
+        let para = `line1 
+line2
+line3`; 
+        console.log(para.split("\n"));//["Line1", "Line2", "Line3"]
+        
+        let messy = "Javascript   is    programing"; 
+        console.log(messy.split(/\s+/));  //split by space
+        console.log(str.repeat(3));
+
+    //   stg.match(regex); 
+    let text = "I love JavaScript ,and i love eating biriyani";
+    console.log(text.match(/love/)); //basic match
+    console.log(text.match(/love/g));//global match (find all matches)
+    let digit = "Price: 200, Discount: 50";
+    console.log(digit.match(/\d+/g));// \d+ means one or more digits //['200','50']
+
+    // localecompare (compares alphabetically) = -1(string1), 0(both equal), 1(str2)
+    console.log("apple".localeCompare("banana")); //-1 str1
+    console.log("apple".localeCompare("apple")); // 0 equal
+    console.log("banana".localeCompare("apple")); // 1 str2
+    </script>
+</body>
+</html>
