@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array - Methods</title>
+</head>
+<body>
+  <h1>Array - Methods</h1>
+  <p><b>forEach()</b>: excete the provided function once for each array element </p>
+  <p><b>map()</b>: Returns a new array with transformed elements.</p>
+  <p><b>at()</b>: takes an int value and returns the item at that index</p>
+  <p><b>copywithin()</b>: shallow copies part of an array to another location in the same array and returns it,
+    <br>  without modifying its size.</p>
+  <p><b>entities()</b>:</p>
+  <p><b></b>:</p>
+  <p><b></b>:</p>
+  <p><b></b>:</p>
+  <p><b></b>:</p>
+
+
+  <script>
+    const fruites = ["apple", "banana", "orange", "kiwi"];
+    const Numbers = [100, 200, 300, 400, 500];
+    
+    // forEach() - executes a provided function once for each array element
+      fruites.forEach((fruite,index)=>{
+      console.log(`fruite ${fruite} is at index ${index}`)
+      });
+
+    fruites.forEach((fruit)=>{
+    console.log(fruit.toUpperCase());
+    })
+      Numbers.forEach((num)=>{
+        console.log(num * 2); // prints double of each number
+      });
+// ==================================================================
+    //map() - Returns a new array with transformed elements.
+    const withtax = Numbers.map((x)=> x * 1.18); 
+    console.log(withtax);
+// =================================================================
+
+    //at() - takes an int value and returns the item at that index
+    console.log(fruites.at(3));
+    console.log(Numbers.at(0));
+    console.log("Sushmitha".at(8));
+    console.log("Santhosh"[0]);
+
+    //copyWithin() - shallow copies part of an array to another location in the same array and returns it,
+    //  without modifying its size.
+    let arr = [1, 2, 3, 4, 5];
+arr.copyWithin(0,1,4);
+console.log(arr); // [2, 3, 4, 4, 5]
+
+// Example with pets array
+let pets = ["dog", "cat", "parrot", "fish"];
+pets.copyWithin(2,0,1);
+console.log(pets); // ["dog", "cat", "dog", "fish"]
+
+// =======================================
+// entries() - returns a new Array Iterator object that contains the key/value pairs for each index in the array.
+// in entires will be getting both key and value of the array
+let animals = ["dog", "cat", "parrot", "fish"];
+let animalEnties = animals.entries(); 
+for (let ani of animalEnties){
+    console.log(ani);
+}
+console.log([...animals.entries()])
+
+// values() - returns a new Array Iterator object that contains the values for each index in the array.
+// in values will be getting only the values of the array
+let val = animals.values(); 
+for(let v of val){
+    console.log(v)
+}
+console.log([...animals.values()])
+// keys() - returns a new Array Iterator object that contains the keys for each index in the array.
+
+let keys = animals.keys(); 
+for(let key of keys){
+    console.log(key);
+}
+console.log([...animals.keys()]);
+// =========================================================
+
+// every() - tests whether all elements in the array pass the test implemented by the provided function.
+let numbers = [77, 27, 93, 34, 75];
+
+let allPositive = numbers.every(x=> x > 0);
+console.log(allPositive);//true, because all numbers are positive
+
+let abovefiftey = numbers.every(x=>x>50); 
+console.log(abovefiftey); // false, because 27 and 34 are not above 50
+// =============================================================
+
+// fill() - used to fill all elem of a array with a specific value
+let arr1 = [1,2,3,4,5];
+let arr2 = [1,2,3,4,5];
+let arr3 = [1,2,3,4,5];
+
+arr1.fill(11,2,3); //value,start,end 
+console.log(arr1); //[ 1, 2, 11, 4, 5 ]
+
+arr2.fill(10,1); //value,start
+console.log(arr2); //[ 1, 10, 10, 10, 10 ]
+
+arr3.fill(100);//value
+console.log(arr3); //[ 100, 100, 100, 100, 100 ]
+
+let arr4 = Array(5).fill(6);
+console.log(arr3);
+
+// =========================================================
+// filter() - creates a new array with all elements that pass the test implemented by the provided function.
+let numbers1 =[1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let even = numbers1.filter(num => num % 2 ===0); 
+console.log(even);
+
+let numbers2 = [43,22,41,66,12,33]; 
+const result = numbers2.filter(x=>x<35); 
+console.log(result);
+
+const res = animals.filter(ani => ani.length > 3); 
+console.log(res);
+// =========================================================
+
+// find() - returns the value of the first element in the array that satisfies the provided testing function.
+
+const res1 = numbers1.find(num => num%2 ===0); 
+console.log(res1); // 2, first even number
+
+const res2 = numbers1.find(num => num >6); 
+console.log(res2); // 7, first number greater than 6
+const res3 = animals.find(ani => ani.length > 3); 
+console.log(res3); // "parrot", first animal with length greater than 3
+// =========================================================
+</script>
+</body>
+</html>
