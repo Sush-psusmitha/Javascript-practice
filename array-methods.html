@@ -58,6 +58,9 @@ pets.copyWithin(2,0,1);
 console.log(pets); // ["dog", "cat", "dog", "fish"]
 
 // =======================================
+
+
+
 // entries() - returns a new Array Iterator object that contains the key/value pairs for each index in the array.
 // in entires will be getting both key and value of the array
 let animals = ["dog", "cat", "parrot", "fish"];
@@ -125,15 +128,243 @@ console.log(res);
 // =========================================================
 
 // find() - returns the value of the first element in the array that satisfies the provided testing function.
-
+// let to right - first occurance
 const res1 = numbers1.find(num => num%2 ===0); 
 console.log(res1); // 2, first even number
 
 const res2 = numbers1.find(num => num >6); 
 console.log(res2); // 7, first number greater than 6
+
 const res3 = animals.find(ani => ani.length > 3); 
 console.log(res3); // "parrot", first animal with length greater than 3
 // =========================================================
+
+// let animals = ["dog", "cat", "parrot", "fish"];
+// let numbers2 = [43,22,41,66,12,33]; 
+// let numbers = [77, 27, 93, 34, 75];
+
+//findLast() -  return the value of first occurance from right to left; 
+const res4 = numbers2.findLast(x => x > 40); 
+console.log(res4) //66; 
+
+const res5 = animals.findLast(ani => ani.length > 3);  
+console.log(res5); //fish
+const oddVal =  numbers.findLast(num => num %2 !== 0 ); 
+console.log(oddVal);//75
+
+// findindex() -  find the index of the first element(left to right) in an array that satisfy a specific condition 
+const res6 = animals.findIndex(ani=>ani.length > 3); 
+console.log(res6); //2
+
+const res7 = numbers.findIndex(x=> x%2 ===0); 
+console.log(res7); //3
+
+// findIndexLast() - find the index of the first ele(right to left side) in an array which satisfy a specific condition
+const res8 = animals.findLastIndex(ani => ani.length > 3);
+console.log(res8)//3
+const oddVal1 =  numbers.findLastIndex(num => num %2 !== 0 ); 
+console.log(oddVal);
+
+// flat(depth) - used to creaate a new arraythat is a flattned version of original array, depth will indicate the level
+
+const matrix = [
+  [3,4,6], 
+  [9,8,3], 
+  [9,4,7]
+]
+// old way 
+console.log([].concat(...matrix)); //[3, 4, 6, 9, 8, 3, 9, 4, 7]
+
+// with falt()
+console.log(matrix.flat());//[3, 4, 6, 9, 8, 3, 9, 4, 7]
+
+const matrix2 = [
+  [7,5,4], 
+  [9,4,5], 
+  [9,[5,55,55],10]
+]
+console.log(matrix2.flat(1))//[7, 5, 4, 9, 4, 5, 9, Array(3), 10] default 1 for depth
+console.log(matrix2.flat(2))//[7, 5, 4, 9, 4, 5, 9, 5, 55, 55, 10]
+
+// flatmap() - is the combination of flat() and map()
+
+const mat = [2,33,4,7]
+const res9 = mat.flatMap(num => num === 2 ? 55 : 10); 
+console.log(res9); //in the place of 2 value , 55 will be replaced , other values will be replaced by 10
+
+const res10 = mat.flatMap(num => num%2 === 0 ? "even": "odd" ); 
+console.log(res10); //if the condition is satisfied in that place replaced by the even string.. in false place filled with odd value
+
+let namee = "sushsmitha"; 
+// console.log(namee.split(""));
+
+console.log(Array.from(namee)); //['s', 'u', 's', 'h', 's', 'm', 'i', 't', 'h', 'a']
+
+// Array.from(arraylike,mapfn)
+const res11 = Array.from(numbers1, x => x*3); 
+console.log(res11);
+// ===============================================================
+
+// Array.of() - creates a new instance with the elements provided as arguments
+console.log(Array.of("anbu", 3, true,"555"));
+console.log(Array("sushmitha",55))
+
+// ===============================================================
+
+// join() - it is used to convert all elements of an array into string.
+const fruites1 = ["apple", "banana", "orange", "kiwi", "mango","mango"];
+console.log(fruites1.join(", ")) //apple, banana, orange, kiwi, mango
+console.log(fruites1.join(" ")) //apple banana orange kiwi mango
+console.log(fruites1.join(" - ")) //apple - banana - orange - kiwi - mango
+console.log(fruites1.join("/")) //apple/banana/orange/kiwi/mango
+// ==================================================================
+
+// reduce(); 
+const res12 = numbers.reduce(function(acc,curr){
+    acc = acc + curr 
+    return acc
+},0)
+console.log(res12);
+const names = [
+    {fname:"sush", lname:"mitha", age: 23},
+    {fname:"arnav" ,lname:"Roa", age: 33},
+    {fname:"shyeyanchi", lname:"suri", age: 28},
+    {fname:"Gowri", lname:"matha", age: 20}
+    ]
+// q. how many plple in the same age category
+    const res13 = names.reduce(function(acc,curr){
+      if(acc[curr.age]){
+        acc[curr.age] = ++acc[curr.age];
+      }
+      else{
+        acc[curr.age] = 1;
+      }
+      return acc
+    },{})
+
+    console.log(res13.filter);
+
+    //Q. fname of the people whos age is more that 25.
+    const res14 = names.reduce(function(acc,curr){
+      if(curr.age > 25){
+       acc.push(curr.fname)
+      }
+      return acc
+    },[]); 
+    console.log(res14);
+
+    // ================================================
+// reduceRigth() - Iterate over the array from right to left. instead of left to right.
+  const res15 = numbers.reduceRight(function(acc,curr){
+    acc = acc + curr; 
+    return acc
+  },0);
+  console.log(res15);
+// =======================================================
+
+// includes("serVal",index) - used to check if an array includes a certain element, returning true or false as appropriate
+   console.log(animals.includes("fish")); //true
+   console.log(animals.includes("camel")); //false
+
+
+   console.log(animals.includes("cat",1)); //true
+   console.log(animals.includes("cat",2)); //false
+  
+// index() - used to find the first occurance of a specified element in an array
+console.log(fruites1.indexOf("kiwi")); 
+console.log(animals.indexOf("dog"));
+
+// lastIndexOf() - used to find the first occurance of a specified ele from right to left
+const fruites2 = ["banana",  "apple", "orange","apple", "kiwi", "mango" ,"mango"];
+console.log(fruites2.lastIndexOf("mango"));//5 1st occ right to left
+console.log(fruites2.indexOf("apple")); //1  1st occ left to right
+
+// ====================================================================
+let a = {name:"Sushmita"};
+// Array.isArray() - given value is array or not if it is return true, if not returns false.
+console.log(Array.isArray(fruites2));//true
+console.log(Array.isArray(a));//false 
+console.log(Array.isArray("789"));//false 
+
+// reverse() - used to reverses the elements of the original Array, 
+let alpha = ['a','b','c','d']; 
+console.log(alpha.reverse()); //['d', 'c', 'b', 'a']; 
+console.log(alpha);  //['d', 'c', 'b', 'a']; //original array modified
+
+//toReversed() - will create a shallow copy of an array then reverse the elements, like without modifying the original
+
+let alpha2 = ['a','b','c','d','e','f','g']; 
+const reversedAlpha = alpha2.toReversed();
+console.log(reversedAlpha); //here reversed order of original array
+console.log(alpha2);//original array not modified
+
+// =====================================================
+// some() - used to test atlease one of the element in an array passess the test implemented by the provided function
+const someOutpt  = names.some(x => x.age < 21); 
+console.log(someOutpt); 
+
+// sort() - used to sort the elements in an array and return the modified original array 
+
+// const fruites2 = ["banana",  "apple", "orange","apple", "kiwi", "mango" ,"mango"];
+console.log(fruites2.sort()); // ['apple', 'apple', 'banana', 'kiwi', 'mango', 'mango', 'orange']
+console.log(fruites2)// modifies the original array. 
+
+//sorted() - creates a shallow copy of an array then sort the elements like without modifying the original array; 
+const sortOutput = fruites1.toSorted(); 
+console.log(sortOutput); //['apple', 'banana', 'kiwi', 'mango', 'mango', 'orange']
+console.log(fruites1);
+
+// toLocalString() 
+const Amt = 48299892; 
+const amtRes = Amt.toLocaleString('hi-IN', {
+  currency : 'INR',
+}); 
+console.log(amtRes);
+
+
+// toString(): 
+const string = ['a','b','c','d','e','f',5,true]; 
+console.log(string.toString().replaceAll("," , ' - '));
+// with(index,value):  in that specified index value will be replaced
+console.log(string.with(0,"Apple")); //['Apple', 'b', 'c', 'd', 'e', 'f', 5, true]
+
+// ====================================================
+
+//push() - used add the element in the end
+const colors = ["red",'yellow','blue','orange','pink']
+colors.push("purple");   
+console.log(colors)//['red', 'yellow', 'blue', 'orange', 'pink', 'purple'];
+
+//unshift() - add the element in the start of an array
+colors.unshift("lemon"); 
+console.log(colors); 
+
+// pop() - used to pop element in the end of an array; 
+colors.pop()
+console.log(colors); 
+
+//shift() - delete in the start of an array
+colors.shift(); 
+console.log(colors); 
+
+
+// slice(startindex,endindex) - slice the particular values doesn't modify the original array, 
+//if not specified the endindex, by default it will take the length of an array.
+let things = ['chair','table','spoon','bowl','plate','fork']; 
+
+console.log(things.slice()); //whole array
+console.log(things.slice(0,2)); // ['chair,'table']
+console.log(things.slice(2)); //['spoon','bowl','plate','fork']
+
+// splice(startindex, deletecount,itemN) - used to insert, or to replace or remove an element or elements from an array. 
+//chnages the original array, and returns the removed elements in an array
+
+let months = ['jan', 'feb', 'march','april']; 
+//console.log(months.splice(0))// ['jan', 'feb', 'march','april']; 
+console.log(months.splice(0,2)); //['jan', 'feb']; returned removed value
+console.log(months)//['march','april'] after removed balance items
+console.log(months.splice(0,0,"may"));
+console.log(months);//['may', 'march', 'april']
 </script>
 </body>
 </html>
