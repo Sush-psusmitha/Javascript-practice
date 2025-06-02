@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise</title>
+  <style>
+    * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-weight: normal;
+}
+
+body {
+  background: #000;
+  color: white;
+}
+
+.box {
+  max-width: 600px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid purple;
+}
+
+.special {
+  color: teal;
+  font-style: italic;
+}
+
+strong {
+  color: rgba(173, 23, 23, 0.863);
+}
+  </style> 
+</head>
+  <body>
+    <section class="container">
+      <section class="one box">
+        <h1 class="first">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
+          doloremque consequatur voluptatibus, explicabo facere accusamus? Odit
+          corporis nesciunt amet laborum.
+        </h1>
+      </section>
+      <section class="two box">
+        <h1 class="second">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
+          doloremque consequatur voluptatibus, explicabo facere accusamus? Odit
+          corporis nesciunt amet laborum.
+        </h1>
+      </section>
+      <section class="three box">
+        <h1 class="third">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
+          doloremque consequatur voluptatibus,
+          <span class="special">explicabo</span> <script></script> facere accusamus? Odit
+          <b>corporis nesciunt amet laborum.</b>
+        </h1>
+      </section>
+    </section>
+
+    <script>
+
+        // check the innerText of third element 
+        const first = document.querySelector(".first"); 
+        console.log(first.innerText);  //return formatted text only
+
+        // check the textContent of third element 
+        const second = document.querySelector(".second");
+        console.log(second.textContent);  //return unformatted text with spaces and line breaks
+
+        // check the innerHTML of third element 
+        const third = document.querySelector(".third"); 
+        console.log(third.innerHTML);  // return unformatted text,space and tagss, exactly the HTML docx
+       
+    </script>
+  </body>
+</html>

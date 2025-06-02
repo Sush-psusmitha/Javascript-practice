@@ -1,0 +1,39 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siblings</title>
+     </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li class="fourth">4</li>
+    </ul>
+    <script> 
+let list = document.querySelector("ul");
+        let firstLi = document.querySelector("li"); 
+
+        // parentElement - gets the parent
+        console.log(firstLi.parentElement); //get the parent
+        console.log(firstLi.parentNode); //get the parent
+
+        //children - list of childresn
+        console.log(list.children)
+        console.log(list.children[0]) //can access the childrens by []
+
+        //firstElementChild() / lastElementChild - first child element
+        console.log(list.firstElementChild.innerText) //1
+        console.log(list.lastElementChild.innerText) //4
+
+        //nextElementSibling() / previousElementSibling(): 
+        console.log(firstLi.nextElementSibling.innerText)//2
+
+        const fourthLi = document.querySelector(".fourth"); 
+        console.log(fourthLi.previousElementSibling.innerText)
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attributes</title>
+    <style>
+        .one{
+     color: rgb(44, 82, 7);
+        }
+        .two{
+            color: chocolate;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="one">Changing Styles</h1>
+     <a href="https://github.com/Sush-psusmitha" target="_blank">Sushmitha Git Hub link</a>
+     <input type="text" value="">
+
+     <script>
+        //getting attribute:
+        const a = document.querySelector("a"); 
+        console.log(a.href); 
+        console.log(a.target);
+        const input = document.querySelector("input"); 
+        console.log(input.value);
+        console.log(input.type);
+
+        //setting attributes: 
+        a.href="https://www.youtube.com"; 
+        console.log(a.href); 
+
+        input.type = "email"; 
+        console.log(input.type);
+        console.log(input.placeholder ="enter")
+       
+       
+        // methods(): 
+
+        // 1.getAtrribute(attributeName);
+        console.log(a.getAttribute("href"));
+        console.log(a.getAttribute("target"))
+
+        // setAttribute("Name","value");
+        input.setAttribute("placeholder" , "Email");
+        console.log(input.placeholder);
+        
+         a.setAttribute("href","https://github.com/Sush-psusmitha");
+         console.log(a.href,a.target);
+
+         input.setAttribute("type","password"); 
+         console.log(input.type); 
+
+         //removeAttriute: 
+         a.removeAttribute("href"); 
+         console.log(a.href); 
+// chnaging styles
+const h1 = document.querySelector("h1"); 
+h1.style.color ="orange";
+h1.style.fontStyle ="italic";
+h1.style.fontWeight = "bold";
+h1.style.width="300px"; 
+h1.style.height="80px"; 
+h1.style.border ="4px solid #dddddd"
+h1.style.marginBottom = "30px";
+h1.style.textAlign = "center"; 
+h1.style.padding = "60px 30px";
+
+        
+     </script>
+</body>
+</html>

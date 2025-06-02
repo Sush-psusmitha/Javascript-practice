@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassList - DOM</title>
+    <style>
+        .style{
+            color: crimson;
+            text-decoration: line-through;        
+        }
+        .h2-style{
+            font-size: 19px;
+            color: blue;
+            border: 1px solid #cb1414;
+            font-style: italic;
+        }
+        .toggle{
+            color: rgb(229, 123, 85);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="style">Hello World</h1>
+    <h2>Adding Class to the elements</h2>
+    <h3 class="toggle">toggle class</h3>
+    
+    <p><b>ClassList: </b> aloow us to check all class which the element has</p>
+    <p>add():  by using add() we can add the class styles to the elements</p>
+    <p>remove(): we can remove the style class in the respective element  </p>
+    <p>toggle(): if we have class it will remove if dont have class it will add the class to the element.</p>
+ 
+ <script>
+//adding class:
+         const h1 = document.querySelector("h1");
+         console.log(h1.classList); 
+         h1.classList.remove("style");
+//removing class :
+         const h2 = document.querySelector("h2"); 
+         h2.classList.add("h2-style"); 
+
+//toggle(): 
+        const h3 = document.querySelector("h3"); 
+        h3.classList.toggle("toggle");
+
+        //contains(): return true or false
+         console.log(h2.classList.contains("style")); //false
+  
+    </script>
+</body>
+</html>

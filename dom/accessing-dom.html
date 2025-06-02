@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessing Elements in DOM</title>
+    <style>
+        h1,h2,h3,h4,h5{
+          border: 1px solid #dddd;
+          padding: 10px;
+          max-width: 500px;
+          box-shadow: 0.5px 0.5px 2px 2px #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>getElementByTagName</h1>
+    <h1>getElementByTagName</h1>
+    <h1>getElementByTagName</h1>
+  
+    <h2 id="main">getElementById</h2>
+    <h3 class="cls" id="main">getElementByClassName</h3>
+    <h4 class="cls-1" id="id-1">querySelector</h4>
+
+    <ul>
+        querySelectorAll()
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+<script>
+    //getElementByTag
+    console.log(document.getElementsByTagName("h1"));
+    console.log(document.getElementsByTagName("h1").length);
+   
+    //getElementById
+    console.log(document.getElementById("main"));
+   
+    //getElementByClassName
+    console.log(document.getElementsByClassName("cls-1"));
+  
+     //querySelector: we can select first occurance of ID,tagname,ClassName using dot.    
+     console.log(document.querySelector("h1")); 
+     console.log(document.querySelector(".cls")); 
+     console.log(document.querySelector("#main")); 
+   //querySelectorAll() - all elements which has the ID,className, gonna select.
+   console.log(document.querySelectorAll("#main"));
+   console.log(document.querySelectorAll("li"))
+
+   //======================================================
+   //sotring variables 
+   const h1 = document.querySelector("h1"); 
+   console.log(h1);
+
+   const  li = document.querySelectorAll("li"); 
+   console.log(li);
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnerText, textContext,InnerHtml</title>
+</head>
+<body>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+        <script>console.log("sush")</script> 
+        Saepe laborum ad,
+         magni <b>amet cupiditate quia culpa ipsam</b> quibusdam perspiciatis soluta? <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Et alias repudiandae labore quibusdam accusamus,
+          dolorum ipsum soluta, iusto, ex quis
+           beatae perferendis molestiae reprehenderit repellat libero hic numquam totam. Sunt.</p>
+   
+   
+ 
+     
+    <h2>innerText</h2>
+    <p>will give pure formatted text </p>
+    <p>use this when you only want visible and styled text.</p>
+
+    <h2>textContent</h2>
+    <p>Return all the text and Preserves text only exactly as it appears in the html docu without tags, including extra spaces/line break </p>
+    <p>use when You want raw text from the DOM.</p>
+
+    <h2>innerHTML</h2>
+    <p>Return the html docx exaclty including tags, spaces and line breaks literaly everything</p>
+   
+   
+    <h1>Hello World</h1>
+
+    <script>
+        const p = document.querySelector("p"); 
+        console.log(p.innerText); //return pure visible text 
+        console.log(p.textContent); //return the html docx text including space,line breaks
+        console.log(p.innerHTML) // return as it html docx includs tags, line br, spacing
+
+//==========================================
+    const h1 = document.querySelector("h1"); 
+    h1.innerText = "Text changed";
+    h1.innerHTML = "<em>Sushmitha</em>";
+    h1.innerHTML = "<del>Sushmitha</del>";
+
+   
+   
+   </script>
+</body>
+</html>
