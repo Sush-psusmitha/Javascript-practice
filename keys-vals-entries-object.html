@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object - keys, values,entries</title>
+</head>
+<body>
+    <h1>Object - keys, values,entries</h1>
+    <p>We can iterate object keys with the for-in loop</p>
+
+    <script>
+        const names = {
+            'sushmitha':22, 
+            'kesavulu':48,
+            'Mahalakshsmi':46,
+            'Vasu':24
+        }
+
+        // Object.key() - js provides this global Object to retian the keys and values as an array.
+
+        const keys = Object.keys(names); 
+        console.log(keys) // ['sushmitha', 'kesavulu', 'Mahalakshsmi', 'Vasu']
+
+        for( let key of Object.keys(names)){
+            console.log(key);  
+        }
+       
+        // Object.values() -  val as an array
+        const val = Object.values(names); 
+        console.log(val);//[22, 48, 46, 24]
+
+        for(let v of val){
+            console.log(v) 
+        }   
+
+        //Object.entries - entreis as an array
+        const entries = Object.entries(names); 
+        console.log(entries); // [Array(2), Array(2), Array(2), Array(2)]
+        for(let key of entries){
+           console.log(key)
+        }
+        //Object.fromEntries() - converts it back into an object.
+        const newObj = Object.fromEntries(entries); 
+        console.log(newObj); 
+        
+        for(let [key,value] of Object.entries(names)){
+            console.log(`${key} : ${value}`);
+        }
+
+
+
+ //using for in loop to get the object keys, val and entries
+        // for(let key in names){
+        //     console.log(key)
+        // }
+        // for(let key in names){
+        //    let values = names[key]
+        //    console.log(values)
+        // }
+        // for(let key in names){
+        //     console.log(key,names[key]);
+        // }
+
+//Examples: 
+
+//1. trasform keys to uppercase:
+    const details = {
+        name:"Sushmitha", 
+        age:23, 
+        city: 'New york'
+    }
+    const upperCaseKeys = Object.entries(details).map(([k,v])=> [k.toUpperCase(),v]); 
+    console.log(upperCaseKeys) //[Array(2), Array(2), Array(2)]
+    console.log(Object.fromEntries(upperCaseKeys)); //{NAME: 'Sushmitha', AGE: 23, CITY: 'New york'}
+  
+    //ex:2
+    const form = { name: '', email: '', password: '123' };
+    const emptyField = Object.keys(form).filter(key => !form[key]);  //!form[key]-"If the value for this key is falsy. " " -empty string considered false
+    console.log(emptyField); //['name', 'email']
+
+    //ex: 3 
+    const prices = {apple: 1, banana:2, carrot:3}; 
+    const NewP = Object.entries(prices).map(([k,v])=>[k, v*20]); 
+    console.log(Object.fromEntries(NewP));
+
+    const labels = { save: "Guardar", cancel: "Cancelar" };
+    Object.entries(labels).forEach(([k,v]) => console.log(`UI design for ${k}: ${v}`));
+
+    </script>
+</body>
+</html>
