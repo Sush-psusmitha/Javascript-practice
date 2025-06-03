@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating and Appending Elements</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus illo aliquid explicabo qui excepturi assumenda ipsum! Consequatur impedit ea neque!</p>
+
+    <section>Hello</section>
+  <ul class="new-list">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li class="four">4</li>
+      <li>5</li>
+    </ul>
+
+<script>
+//create Elements , adding text & class
+const h1 = document.createElement("h1"); 
+const body = document.body;
+
+
+h1.textContent = "World";
+h1.classList.add("great"); 
+console.log(h1);
+
+//appendChild():
+body.appendChild(h1)
+
+// ================================
+
+const ul = document.querySelector("ul");
+const newLi = document.createElement("li");
+const firstLi = document.querySelector("li");
+newLi.textContent = "5 added by appending child"; 
+newLi.style.color = "red";
+ul.appendChild(newLi); 
+
+// selector.insertBefore(what to insert,where to insert):
+ul.insertBefore(newLi,firstLi); 
+
+// ===============================================
+
+//insertAdjacentElement(where,what); 
+const firstP = document.querySelector("p"); 
+const i = document.createElement("i"); 
+i.textContent = "Im italic text"; 
+i.style.color = "Purple"; 
+i.style.fontWeight = "bold"; 
+
+// firstP.insertAdjacentElement("beforebegin",i);
+// firstP.insertAdjacentElement("beforeend",i);
+// firstP.insertAdjacentElement("afterend",i);
+// firstP.insertAdjacentElement("afterbegin",i);
+
+// =======================
+//append() - add after  / prepend() - add before
+const sec = document.querySelector("section"); 
+const span = document.createElement("span"); 
+span.style.color = "crimson";
+span.textContent = "H4 Tag"
+sec.append(i,span);
+sec.prepend(span)
+
+
+//=================================================
+
+//remove() - removes all the childs 
+//removeChild() - removes the specified child
+const newList = document.querySelector(".new-list"); 
+const fourList = document.querySelector(".four");
+newList.removeChild(fourList);
+newList.remove();
+</script>
+</body>
+</html>
