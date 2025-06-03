@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MouseEvent</title>
+    <style>
+        p:hover{
+           pointer-events: all;
+        }
+        .red {
+  color: red;
+}
+.blue {
+  color: blue;
+}
+.teal {
+  color: teal;
+}
+.steelblue {
+  color: steelblue;
+}
+.orange {
+  color: orange;
+}
+.purple {
+  color: purple;
+}
+.pink {
+  color: pink;
+}
+.crimson {
+  color: crimson;
+}
+.chocolate {
+  color: chocolate;
+}
+.aqua {
+  color: aqua;
+}
+    </style>
+</head>
+<body>
+    <h1>Types of Mouse Event</h1>
+    <!-- onlick -->
+    <p class="click"><b>click:</b>The event occurs when the user clicks on an element</p>
+    <p class="contextmenu"><b>contextmenu:</b>The event occurs when the user right click on an element to open a context menu</p>
+    <p class="dblclick"><b>dblclick:</b> The event occurs when user doubl click on the element</p>
+    <p class="mousedown"><b>mousedown:</b>When the user presses a mouse button over an element</p>
+    <p class="mouseenter"><b>mouseesnter: </b>When the pointer is moved onto the element</p>
+    <p class="mouseleave"><b>mouseleave: </b>When the pointer is moved out of an element</p>
+    <p class="mousemove"><b>mousemove: </b> Then event occurs when the pointer is moving while it is over an element</p>
+    <p class="mouseout"><b>mouseout: </b>When a user moves the mouse pointer out of an element, or out of one of its children</p>
+    <p class="mouseover"><b>mouseover: </b>when the pointer is moved onto an element, or onto one of its children</p>
+    <p class="mouseup"><b>mouseup: </b>When a user release a mouse button over an element</p>
+    <script>
+let one = document.querySelector(".click");
+let two = document.querySelector(".contextmenu");
+let three = document.querySelector(".dblclick");
+let four = document.querySelector(".mousedown");
+let five = document.querySelector(".mouseenter");
+let six = document.querySelector(".mouseleave");
+let seven = document.querySelector(".mousemove");
+let eight = document.querySelector(".mouseout");
+let Nine = document.querySelector(".mouseover");
+let Ten = document.querySelector(".mouseup");
+
+one.addEventListener("click",()=>{
+    one.classList.toggle("red");
+});
+two.addEventListener("contextmenu",()=>{
+    two.classList.toggle("blue");
+}); 
+three.addEventListener("dblclick",()=>{
+    three.classList.toggle("purple")
+});
+four.addEventListener("mousedown",()=>{
+    four.classList.toggle("teal")
+});
+five.addEventListener("mouseenter",()=>{
+    five.classList.toggle("orange");
+});
+six.addEventListener("mouseleave",()=>{
+    six.classList.toggle("crimson");
+});
+seven.addEventListener("mousemove",()=>{
+    seven.classList.toggle("pink");
+    seven.textContent = "Hello moved";
+});
+eight.addEventListener("mousemove",()=>{
+    eight.classList.toggle("pink");
+});
+Nine.addEventListener("mouseover",()=>{
+   Nine.classList.toggle("chocolate");
+});
+Ten.addEventListener("mouseup",()=>{
+    Ten.classList.toggle("aqua");
+});
+
+    </script>
+</body>
+</html>

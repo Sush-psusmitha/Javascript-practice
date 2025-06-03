@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <!--  -->
+    <h1>Events</h1>
+    <!-- bad way adding event in the inline -->
+    <button onclick="alert('hello')">inline event</button>
+    
+    <button class="second">event</button>
+    <!--  -->
+    <button class="third">addEventListners</button>
+    
+    <p class="para">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati et voluptate neque molestiae.
+    </p>
+
+    <form action="">
+        <input type="text">
+        <input type="submit" value="submit">
+    </form>
+    <script>
+        //badway
+  const btn = document.querySelector(".second") ; 
+//   btn.onclick(alert('namasthye')); //this wont rendering the page it will show before clicking
+    
+    const btn2 =document.querySelector(".third"); 
+    btn2.addEventListener("click", ()=>{console.log('Hello addEventListners')});
+    
+    //event object: 
+    const P = document.querySelector("p"); 
+    P.addEventListener("click", (event)=> console.log(event))
+    
+    const form = document.querySelector("form"); 
+    const input = document.querySelector("input"); 
+
+    form.addEventListener("submit", (event) =>{
+        event.preventDefault(); 
+        // console.log(event);
+        console.log(input.value);
+    });
+    </script>
+</body>
+</html>
