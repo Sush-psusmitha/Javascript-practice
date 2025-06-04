@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard event</title>
+</head>
+<body>
+    
+    <h1>Keyboard Events</h1>
+    <input type="text">
+
+    <script>
+        //keypress - event occures when the key is pressed.
+    const input = document.querySelector("input"); 
+    // input.addEventListener("keypress",()=>{
+    //     console.log(input.value)
+    // })
+
+    //keyup- when we release the keys even will trigger.
+    // input.addEventListener("keyup",()=>{
+    //     console.log("keyUp", input.value)
+    // })
+
+    //keydown - key press/down kind og same
+    //  input.addEventListener("keydown",()=>{
+    //     console.log("keydown", input.value)
+    //  })
+
+    //===============================================================
+    
+    //usefull properties and methods for keyboard events
+     
+    //charCode - will give the code for each the what we type
+    //code - key name will be printed
+    //ctrlKey - will give true if we use ctrl key or else false
+    //key - key's value will be retained
+    // shiftKey - if we hold shift key will get true else false.
+    input.addEventListener("keypress", event =>{
+        // console.log(event.charCode);
+        // console.log(event.code);
+        // console.log(event.ctrlKey);
+        // console.log(event.Key); 
+        // console.log(event.shiftKey); 
+    })
+
+  </script>
+</body>
+</html>
