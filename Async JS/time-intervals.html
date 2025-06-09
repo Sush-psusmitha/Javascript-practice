@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout | setInterval | clearTimeout | clearInterval</title>
+</head>
+<body>
+    <h1>setTimeout | setInterval | clearTimeout | clearInterval</h1>
+    
+    <button id="btn">Timer</button>
+    <button id="btn1">Timer1</button>
+    <p><b>setTimeout(): </b>Runs a function once after specified period of time</p>
+    <p><b>clearTimeout():</b> Cancels the setTimeout() before it's excecutes</p>
+    <p><b>setInterval()</b> - it will repeat the function over and over again for a specified no.of times</p>
+    <script>
+        //setTimeout(function, sec):
+        //eg1
+        // setTimeout(()=>{ 
+        //     console.log("setTimeout() will execte once after a specified time")
+        // },2000); 
+
+        // //eg2
+        // function add(a,b){
+        //     console.log(a+b)
+        // }; 
+        // setTimeout(add,3000,5,5); 
+
+        // //eg:3 
+        // setTimeout((channel) => {
+        //   console.log(`Subscribe to ${channel} channel`)
+        // },4000,"Sushmitha Dev");
+
+//===========================================================================
+    //clearTimeout() 
+    let timeoutId = setTimeout(() => {
+        console.log("This won't run")
+    },3000);   
+    
+    const  clear = () => {
+     clearTimeout(timeoutId);
+     console.log('clearTimeout() stopped the timer');
+   }
+   const btn = document.getElementById("btn"); 
+   btn.addEventListener("click",clear);
+   //exp:
+   //when we click the btn, clear() will be called, and clearTimeout will clear
+   //the setTimeout and print console. ELse setimeout will be excecute
+
+   //setInterval() - it will repeat the function over and over again for a specified no.of times
+   const SIntv = setInterval(()=> {
+    console.log("SetInt will repeat again and again after specified time")
+   },3000); 
+  
+    function clear2(){
+      clearInterval(SIntv); 
+      console.log("ClearInterval stops the SetInterval function"); 
+    };
+
+    const btn2 = document.getElementById("btn1"); 
+    btn2.addEventListener("click",clear2);
+
+    // tasks: 
+    //eg:1 => use relevent timing event to display "My Name is ${name}" after delay 4sec
+
+    setTimeout((name)=>{
+        console.log(`My Name is ${name}`)
+    },4000, "Sushmitha")
+
+   //eg2:  => change code to log same phase every sec in the console use a function as a referece: 
+
+//    function eachSec(name){
+//      console.log(`My Name is ${name}`)
+//    }; 
+//    setInterval(eachSec,1000,"Sushmitha"); 
+
+//eg:3 => start count increament for each sec till 10, if it reach ten clear the interval 
+function counter(start,end){
+    let timerr = setInterval(()=>{
+        console.log(start); 
+        if(start < end) {
+            start++; 
+        }
+        else{
+           clearInterval(timerr);
+        }
+    },1000);
+}
+counter(1,10)
+    </script>
+</body>
+</html>

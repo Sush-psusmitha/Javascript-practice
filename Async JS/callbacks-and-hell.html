@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallBack functions</title>
+</head>
+<body>
+    <h1>CallBack fucntions</h1>
+    <p>Passing a function inside another function as an argument is know as Callback Functions</p>
+    <p>it forms a relationship between 2 functions</p>
+
+    <h2>Callback Hell</h2>
+    <p>when the function have the more nested functions and it's stucture is looks like paramid this is know as callback hell.</p>
+     
+    <b>to prevent the callback hell we use promises</b>
+    
+    
+    <script>
+        //eg 1
+        function one(cb){         
+            cb()
+             console.log("function 1")
+        }
+        function two(){
+            console.log("function 2")
+        }
+        one(two)
+        //eg:2
+    let stocks = {
+        Fruits : ["strawberry", "grapes", "banana", "apple"],
+        liquid : ["water", "ice"],
+        holder : ["cone", "cup", "stick"],
+        toppings : ["chocolate", "peanuts"],
+    };
+
+      let order = function(fruit_name,call_prod){
+          setTimeout(()=>{
+             console.log(`${stocks.Fruits[fruit_name]} was selected`); 
+             call_prod();
+            },2000);         
+        }
+
+      let production = function (){
+           setTimeout(()=>{
+            console.log("Production has started"); 
+            setTimeout(()=>{
+               console.log("Fruit has been chopped");
+               setTimeout(()=>{
+                console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} were added`); 
+                setTimeout(()=>{
+                    console.log("The Machine was Started");
+
+                      setTimeout(()=>{
+                        console.log(`${stocks.holder[0]} was selected`); 
+                        setTimeout(()=>{
+                            console.log(`${stocks.toppings[0]} was selected as toppings😍`); 
+                            setTimeout(()=>{
+                                console.log("Icecream is ready to serve🤔")
+                      },1000)
+                     },3000)
+                  },2000)
+                },1000);
+               },1000); 
+            },2000)
+           },)
+        }
+
+        order(1,production);
+
+
+
+        
+    </script>
+</body>
+</html>
