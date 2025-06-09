@@ -7,5 +7,139 @@
 </head>
 <body>
     
+    <h1>What is promise</h1>
+    <p>A Promise in JavaScript is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value.</p>
+
+    <h2>🧠 Why use Promises?</h2>
+    <p>To handle asynchronous tasks like:
+<ul>
+    <li>API calls</li>
+    <li>File reading</li>
+    <li>Timers (setTimeout)</li>
+    <li>Database operations (in backend)</li>
+</ul>
+</p>
+<p>Before promises, developers used callback functions, which could lead to callback hell (nested callbacks).</p>
+  <h2>Promise States</h2>
+
+    <p>Pending – The initial state (neither fulfilled nor rejected).</p>
+    <p>Fulfilled – The operation completed successfully.</p>
+    <p>Rejected – The operation failed.</p>
+
+  <h2>🧪 Syntax</h2>  
+  <p>let promise = new Promise((resolve,reject)=>{})</p>
+    <script>
+         let stocks = {
+            Fruits : ["strawberry", "grapes", "banana", "apple"],
+            liquid : ["water", "ice"],
+            holder : ["cone", "cup", "stick"],
+            toppings : ["chocolate", "peanuts"],
+       };
+
+//        let is_shop_opend = true; 
+
+//        let order = (time,work) => {
+       
+//         return new Promise( (resolve,reject) => {
+        
+//         if(is_shop_opend){
+//             setTimeout(()=>{
+//                resolve(work())
+//             },time)         
+//         }
+//         else{
+//             reject(console.log("Our Shop is closed!!!"))
+//         }
+//        })
+//      }
+// order(2000, ()=>{console.log(`You selected ${stocks.Fruits[0]} fruite`)} )
+// .then( ()=> {
+//     return order("", ()=> console.log("Production has started"))
+// })
+// .then(()=>{
+//     return order(2000, ()=>{console.log("The Fruite was chopped")})
+// })
+// .then(()=>{
+//     return order(1000, () =>console.log(`Add ${stocks.liquid[0]} and ${stocks.liquid[1]}`))
+// })
+// .then(()=>{
+//     return order(1000, () =>console.log("Start the Machine"))
+// })
+// .then(()=>{
+//     return order(2000, () =>console.log(`${stocks.holder[0]} was selected`))
+// })
+// .then(()=>{
+//     return order(3000, () =>console.log(`${stocks.toppings[0]} was selected as toppings`));
+// })
+// .then(()=>{
+//     return order(2000, () => console.log("Icecreame was served to customer") );
+// })
+
+// .catch(()=>{
+//     console.log("Customer left!!!")
+// })
+
+// .finally(()=>{
+//     console.log("Day Ended & shop is closed!!") //will run though promise is resolved or rejected
+// })
+ 
+
+
+
+//eg:1 basic promise
+// let giftPromise = new Promise((resolve,reject)=>{
+     
+//     let giftReady = true; 
+
+//     if(giftReady){
+//         resolve("Here is your gift 🎁")
+//     }
+//     else{
+//         reject("Sorry, no gift today 😢");
+//     }
+// });
+// giftPromise.then((res)=>console.log('Sucess:', res ))
+// .catch((error)=>console.log("Error:", error));
+
+
+//eg:2 with SetTimeout
+
+let timePromise = new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+       resolve("Data will load after 2 seconds delay!")
+    },2000);
+})
+timePromise.then((res)=>{console.log(res)})
+.catch((err)=>conaole.log("err: ",err));
+
+//eg:3 - Promise Chaining
+
+new Promise((resolve,reject) => {
+    resolve(3);
+})
+.then((res)=>{
+    console.log(res)//3
+    return res*2
+})
+.then((res)=>{
+    console.log(res);//6
+    return res*2
+})
+.then((res)=>{
+    console.log(res); //12
+    return res*2
+})
+.then((res)=>{
+    console.log(res); //24
+})
+
+//Handling Errors
+new Promise((resolve,reject) => {
+    throw new Error("Something went wrong!!")
+})
+.then((res)=>console.log(res))
+.catch((err)=>console.log(err))
+
+ </script>
 </body>
 </html>
