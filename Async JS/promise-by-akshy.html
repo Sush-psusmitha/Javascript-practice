@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise by Akshya</title>
+</head>
+<body>
+    <h1>Promise</h1>
+    <p>Whenever JS engine excute the like promise code that will return a promise which in empty object in the initial state, after async time it takes, will be filled data automatically.</p>
+    <p>then we can attach call back functions to then() if the promise is resolved</p>
+    <script>
+const cart = ["pant",'kurtha','shoes']; 
+createOrder(cart)
+.then((orderId)=>{
+    console.log(orderId); 
+    return orderId
+})
+.then((orderId)=>{
+    return proceedToPay(orderId)
+})
+.then((payInfo)=>{
+    console.log(payInfo[0]);  //payment inform
+    return payInfo[1]; //returns OrderID
+})
+.then((orderId)=>{
+    return ShoworderSummer(orderId)
+})
+.then((orderSummery)=>{
+    console.log(orderSummery); 
+    return updateWallet(orderSummery);
+})
+.then((wallInfo)=>{
+    console.log(wallInfo)
+})
+.catch((err)=>{
+    console.log(err)
+})
+.then((errMsg) => {
+    console.log(errMsg??"ThankYou For Shopping :)")
+});
+
+
+function updateWallet(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+         resolve("Wallet is updated!!!")
+        },4000)
+    })
+}
+
+function ShoworderSummer(orderId){
+   return new Promise((resolve,reject)=>{
+    if(!orderId){
+        reject("OrderId Required!!!")
+    }
+    setTimeout(()=>{
+        resolve(`${orderId}; [${cart.toString()}] `)
+    },3000)
+   });
+}
+
+function proceedToPay(orderId){
+    return new Promise((resolve, reject) => {
+        const PayStatus = true;       
+        setTimeout(()=>{
+          if(PayStatus){
+            resolve(["Payment was successfull", orderId])
+          }
+          else{
+            reject("Payment Failed")
+          }
+        },3000)
+
+
+    })
+}
+
+function validateCart(cart){
+    return true;
+}
+function createOrder(cart){
+    return new Promise((resolve,reject)=>{
+        if(!validateCart(cart)){
+         throw new Error("Cart was not validated!")
+        }      
+        const orderId = "1331"; 
+        if(orderId){
+           setTimeout(()=>{
+             resolve(`OrderId: ${orderId}`)
+           },3000)
+        }
+    })
+}
+</script>
+</body>
+</html>
