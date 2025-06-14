@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Api</title>
+</head>
+<body>
+     <h1>Promise.all():</h1>
+     <p>returns an array if all promises are fulfilled, if any fails throws an error, if it does other promise will not settled <br>it's kind of all or none</p>
+
+     <h1>promise.allSettled():</h1>
+     <p>wait for all promise to settle whether it's fullfilled or rejected and gives the result in an array</p>
+     
+     <h1>promise.race():</h1>
+     <p>returns the result of first settled promise whether it's failure or success</p>
+
+     <p>promise.any():</p>
+     <p>return the first successed promise <br> if all promises fails returns an aggregate error and the list of erros as a array.</p>
+
+     <script>
+        //demo: 
+
+        const p1 = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+            //    resolve("P1 suceesfully")
+                reject("P1 rejected") 
+            },3000);
+        })
+        const p2 = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                // resolve("P2 Successfully")
+                 reject("P2 rejected") 
+            },1000);
+        })
+        const p3 = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                // resolve("P3 Successfully")
+                 reject("P3 rejected")
+            },2000);
+        }); 
+        //if all success then array of result , if one fails instant failure will log 
+        Promise.all([p1,p2,p3])
+        .then((res)=>{console.log(res)})
+        .catch((err)=>{console.error(err)})
+
+
+        //wait for all to get settled. (fail/pass)
+         Promise.allSettled([p1,p2,p3])
+        .then((res)=>{console.log(res)})
+        .catch((err)=>{console.error(err)})
+
+        Promise.race([p1,p2,p3])
+        .then((res)=>{console.log(res)})
+        .catch((err)=>{console.error(err)})
+
+        Promise.any([p1,p2,p3])
+        .then((res)=>{console.log(res)})
+        .catch((err)=>{
+            console.error(err);
+            console.log(err.errors) //aggreagte errors list as an array
+        })
+
+     </script>
+
+    </body>
+</html>
