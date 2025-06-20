@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async/await</title>
+</head>
+<body>
+    <h1>Async/Await</h1>
+    <p>async: makes a function returns a promise</p>
+    <p>await: makes an async function wait for a promise </p>
+    
+<script>
+    let stocks = {
+            Fruits : ["strawberry", "grapes", "banana", "apple"],
+            liquid : ["water", "ice"],
+            holder : ["cone", "cup", "stick"],
+            toppings : ["chocolate", "peanuts"],
+       };
+
+//    before async : 
+//   let shop_opened = false; 
+//   let order = () =>{
+//       return new Promise((resolve,reject)=>{
+//         if(shop_opened){
+//             resolve('Shop is opened welcome!!!')
+//         }  
+//         reject("Our shop is closed")
+//       })
+//     }
+//     order()
+//     .then(res=>{console.log(res)})
+//     .catch(err=>{console.log(err)})
+
+function abc(){
+    return new Promise((resolve,reject)=>{
+        // resolve("ABC is exsists")
+        reject("ABC not exsists");
+    })
+}
+async function order1(){
+    try{
+      const res =  await abc();
+      console.log(res);
+    }
+    catch(err){
+       console.log(err);       
+    }
+    finally{
+        console.log("this will run anyway");
+    }
+}
+
+// order1()
+    
+//======================================================
+    //  function toppincs_choice(){
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             resolve(console.log("Which toppings would you like!!"))
+    //         },3000);
+    //     });
+    //  }
+    // async function kitchen(){
+    //     console.log("A")
+    //     console.log("B")
+    //     await toppincs_choice() //pass it for 3sec later below log will excecute
+    //     console.log("C")
+    //     console.log("D")
+    // }
+    // kitchen(); 
+    // console.log("doing the dishes")
+    // console.log("and cleaning the tables")
+
+//=====================================================
+let shop_opened = false; 
+
+let time = (ms)=>{
+    return new Promise((resolve,reject)=>{
+       if(shop_opened){
+        setTimeout(resolve,ms)
+       }
+       else{
+        reject(console.log("Our Shop is Closed!!!"))
+       }
+    })
+}
+ 
+async function work(){
+    try{
+     await time(2000)
+     console.log(`customer selected ${stocks.Fruits[1]}`);
+     console.log("Production has started immediatly.")
+     await time(2000)
+     console.log("Cutting the fruite")
+     await time(1000)
+     console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} added`)
+     await time(1000)
+     console.log("Start the machine!")
+     await time(2000)
+     console.log(`${stocks.toppings[1]} was selected as toppings`)
+     await time(2000)
+     console.log("serving to the customer")
+
+    }
+    catch(err){
+        console.error("customer left!!!")
+    }
+    finally{
+        console.log("Day ended shop will be closed after 10pm")
+    }
+}
+work()
+    </script>
+</body>
+</html>

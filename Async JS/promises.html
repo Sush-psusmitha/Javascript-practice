@@ -58,15 +58,15 @@
 //         }
 //        })
 //      }
-// order(2000, ()=>{console.log(`You selected ${stocks.Fruits[0]} fruite`)} )
+// order(2000, ()=> { console.log(`You selected ${stocks.Fruits[0]} fruite`)} )
 // .then( ()=> {
 //     return order("", ()=> console.log("Production has started"))
 // })
 // .then(()=>{
-//     return order(2000, ()=>{console.log("The Fruite was chopped")})
+//     return order(2000, () => {console.log("The Fruite was chopped")})
 // })
 // .then(()=>{
-//     return order(1000, () =>console.log(`Add ${stocks.liquid[0]} and ${stocks.liquid[1]}`))
+//     return order(1000, () => console.log(`Add ${stocks.liquid[0]} and ${stocks.liquid[1]}`))
 // })
 // .then(()=>{
 //     return order(1000, () =>console.log("Start the Machine"))
@@ -145,7 +145,8 @@ new Promise((resolve,reject) => {
 })
 .then((res)=>console.log(res))
 .catch((err)=>console.log(err))
-//======================================
+
+//====================================================
 
 //promises by fetch: 
 //fetch will return a promise, before it was in pending and empty object, 
@@ -167,7 +168,18 @@ user.then((res)=>{
 })
 //==================================
 
-
+async function order1(){
+   try{
+    await abc; 
+   }
+   catch(err){
+    console.error(err)
+   }
+   finally{
+    console.log("Anyway this will Run!!!")
+   }
+}
+order1();
 
  </script>
 </body>

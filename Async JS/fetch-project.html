@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch()</title>
+    <style>
+        body{
+            text-align: center;
+            padding-block: 100px;
+        }
+         .container {
+      background-color: rgb(171, 92, 245);
+      padding: 30px;
+      border-radius: 10px;
+      color: white;
+      display: inline-block;
+    }
+input{
+    padding: 5px;
+    width: 190px;
+}
+button{
+    padding: 5px;
+    width: 80px;
+}
+    img {
+      display: block;
+      margin: 20px auto;
+      width: 200px;
+      background-color: rgb(207, 186, 227);
+    }
+    </style>
+</head>
+<body>
+    <h1>Fetching the data images of pokeman cartoon world</h1>
+<div class="container">
+<input type="text" id="input" placeholder="Enter the cartoon Name">
+    <button>fetch</button> <br>
+   
+</div>
+ <img src="" id="img" style="display: none;" alt="carttong sprit">
+    
+<br>
+    <p>Hint: try using ==>  Ash Ketchum, Pikachu, Charizard, Bulbasaur, Charmander, Squirtle, Misty, Brock</p>
+    <script>
+    
+     const btn = document.querySelector('button'); 
+     btn.addEventListener("click",fetchData);
+    
+     async function fetchData(){     
+        try{
+          const input = document.getElementById('input').value.toLowerCase();        
+          const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${input}`);
+
+         if(!res.ok){
+            throw new Error("could not fetch the image");
+            
+        }      
+        const data = await res.json(); 
+        const Cartoon_images = data.sprites.front_default; 
+        const img = document.getElementById('img');
+        img.src = Cartoon_images; 
+        img.style.display = "block";
+        }
+        catch(err){
+        console.error(err)
+        }
+        
+      }
+      fetchData()
+    </script>
+</body>
+</html>
