@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desturcturing</title>
+</head>
+<body>
+    <h1>Desturcturing</h1>
+    <p>extract values from array and objects, then assigning them to varibales in a convenient way</p>
+    <p>[] - to perform array Desturcturing</p>
+    <p>{} - to perform object Desturcturing</p>
+</body>
+<script>
+//eg 1: Swap the values of 2 variables    
+let a = 1; 
+let b = 2; 
+[a,b] = [b,a]
+console.log(a);
+console.log(b);
+
+//eg 2 : Swap 2 elements in an array 
+const colors = ['white', 'blue','red','orange','black']; 
+[colors[0],colors[colors.length-1]] = [colors[colors.length-1],colors[0]]
+console.log(colors);  //['black', 'blue', 'red', 'orange', 'white']
+
+//eg:3 Assign Array elements to a varibales 
+const [firstVal,secondVal,thirdVal, ...extraVal] = colors; 
+console.log(firstVal); //black
+console.log(secondVal); //blue
+console.log(thirdVal); //red
+console.log(extraVal); //[orange,white]
+
+
+//eg 4 : extract values from object
+const person1 = {
+    fname: "Sushmitha", 
+    lname: "Panthagaani", 
+    age: 22, 
+    job: "Web Developer"
+}
+const person2 = {
+    fname: "Ayesha", 
+    lname: "Shakes", 
+    age: 23, 
+}
+const {fname,lname,age,job="unemployed"} = person2
+// console.log(fname);
+// console.log(lname);
+// console.log(age);
+// console.log(job);
+
+// eg:5 destrcturing in  function parameter
+function displayDetails({fname,lname,age,job="Accountant"}){
+  console.log(`name: ${fname} ${lname}`); 
+  console.log(`age: ${age}`)
+  console.log(`job: ${job}`)
+}
+displayDetails(person2);
+</script>
+</html>
